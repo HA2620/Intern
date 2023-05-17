@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{{!-- {currStatus = "Login"} --}}
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Clothing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Encode+Sans+Semi+Expanded:wght@300&family=Encode+Sans:wght@100;200&family=Inter:wght@200;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans&family=Raleway:wght@300;400;500&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/e17fd0eebe.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+            <div class="container">
+
+                <a href="/" class="heading navbar-brand d-flex w-50 me-auto">Urban Clothing</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsingNavbar3">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+                    <ul class="navbar-nav w-100 justify-content-center">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/products">shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products?category=top">tops</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products?category=bottom">bottoms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footer">social</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about-us">stories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/policies">policies</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+                        <li class="nav-item">
+                            {{#if currStatus}}
+                            <a class="nav-link" href="account">My Account</a>
+                            {{else}}
+                            <a class="nav-link" href="/login">Login</a>
+                            {{/if}}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">Cart</a>
+                        </li>
+                        {{!-- <li class="nav-item">
+                            <a class="nav-link" href="www.abc.com">{{bb}}</a>
+                        </li> --}}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    {{!-- <ul>
+        <li><a href="login">Login</a></li>
+        <li><a href="register">Registration</a></li>
+    </ul> --}}
+    <div>
+
+
+    </div>
+
+</body>
+
+</html>
