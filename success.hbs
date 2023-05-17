@@ -1,0 +1,15 @@
+<body>
+  {{>navbar}}
+  <div class="dis-container">
+    <h4>THANKS FOR ORDERING FROM US!!</h4>
+    <p>A confirmation email has been sent to <span>{{success.email}}</span></p>
+    <div class="order-details">
+      <p><span>Order Id  </span>#{{success.orderId}}</p>
+      <p><span>Amount paid : </span>{{success.subTotal}} + {{success.tax}} (tax) </p>
+      <p><span>Delhivery Date : </span>{{success.delhiDate}}</p>
+      <p><span>Delhivers to : </span>{{success.delhiversTo}}</p>
+    </div>
+    <p>Go to Homepage. <a href="/">Clich here</a> </p>
+  </div>
+  {{>bottomBar}}
+</body>

@@ -1,0 +1,67 @@
+</head>
+
+{{!-- <body>
+    <div class="login">
+        <form action="/register" method="POST">
+            First Name : <input type="text" placeholder="First Name" name="firstName">
+            Last name : <input type="text" placeholder="Last Name" name="lastName">
+            Email : <input type="email" placeholder="Email" name="email" id="">
+            Password : <input type="password" name="password" id="">
+            Confirm Password : <input type="password" name="confirmPassword" id="">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body> --}}
+
+<body>
+
+     {{>navbar}}
+    <div class="container">
+        <div class="login-box">
+            <div class="sub-heading">
+                <h2>CREATE ACCOUNT</h2>
+            </div>
+            <div class="login-form">
+                <form action="/register" method="POST">
+                    <div class="fr-fname fr-cnt">
+                        <p>Firt Name *</p>
+                        <input type="text" name="firstName" required>
+                    </div>
+
+                    <div class="fr-lname fr-cnt">
+                        <p>Last Name </p>
+                        <input type="text" name="lastName" id="" >
+                    </div>
+                    <div class="fr-mail fr-cnt">
+                        <p>Email *</p>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="fr-pass fr-cnt">
+                        <p>Password *</p>
+                        <input type="password" name="password" id="" required>
+                    </div>
+                    <div class="fr-pass fr-cnt">
+                        <p>Confirm Password *</p>
+                        <input type="password" name="confirmPassword" id="" required>
+                    </div>
+                    <div class="fr-add fr-cnt">
+                        <p>Address *</p>
+                        <input type="text" name="address" id="" required>
+                    </div>
+                    <input type="submit" value="Register">
+                    <div class="form-other-stuff">
+                        <a href="/login">Sign In?</a>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{>bottomBar}}
+</body>
+
+
+</html>

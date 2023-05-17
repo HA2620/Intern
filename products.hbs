@@ -1,0 +1,122 @@
+<body>
+
+    {{>navbar}}
+    <div class="policy-container">
+        <h4>
+            PRODUCTS
+        </h4>
+    </div>
+        <div class="product-container">
+            
+
+
+            {{#each productList}}
+
+            <div class="item-card" onmouseenter="aShow({{this.prod_id}})" onmouseleave="aClose({{this.prod_id}})">
+                <img style="height=1350px;" 
+                    class="prod-img" 
+                    src="/Images/{{this.name}}-jpg.jpg"
+                    alt="IMG">
+                <a style="display: none;" id="a-o-p{{this.prod_id}}" class="a-on-product" href="/prdct-main?id={{this.prod_id}}&name={{this.name}}">QUICK BUY</a>
+                <p>
+
+                    {{this.name}}  <br>     
+                    ₹{{this.price}} <br>
+                    {{!-- Available Qty : {{this.qty}}  --}}
+                </p>
+            </div>
+
+            {{/each}}
+
+
+
+        </div>
+    
+
+
+        {{>bottomBar}}
+
+        <script>
+
+            function aShow(n) {
+      document.getElementById(`a-o-p${n}`).style.display = "block";
+    }
+
+    function aClose(n) {
+      document.getElementById(`a-o-p${n}`).style.display = "none";
+    }
+
+        </script>
+</body>
+
+    {{!-- Hiii --}}
+    {{!-- {{dat}} --}}
+    {{!-- {{dat}} and <td>{{dat}}.{{value}} --}}
+
+        {{!-- <p>
+        <p>hii hello super sello</p> {{dat[0].name}} is {{dat.prod_is}} years old.</p> --}}
+
+        {{!-- <div>Items</div>
+        <div>
+            <ul>
+                {{#each dat}}
+                <li>
+                    name : {{this.name}} <br>
+                    id : {{this.prod_id}} <br>
+                    price :{{this.price}} <br>
+                    qty : {{this.qty}} </li>
+                {{/each}}
+            </ul>
+        </div> --}}
+
+
+        {{!-- <div class="product-container">
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+
+            <div class="item-card">
+                <img src="https://cdn.shopify.com/s/files/1/0611/6514/2193/products/UDM100_CA504BABYBLUE_1_1080x.jpg?v=1665498998"
+                    alt="IMG">
+                <p>Hello</p>
+            </div>
+        </div> --}}

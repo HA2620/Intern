@@ -1,0 +1,24 @@
+<body>
+    {{>navbar}}
+    <div class="container">
+        <div class="login-box">
+            <div class="sub-heading">
+                <h2>LOGIN AS ADMIN</h2>
+            </div>
+            <div class="login-form">
+                <form action="/admin" method="POST">
+                    <div class="fr-mail fr-cnt">
+                        <p>The Six Digit Code</p>
+                        <input type="password" name="password">
+                    </div>
+                    <p>{{message}}</p>
+
+                    <input type="submit" value="Sign In (Admin)">
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>

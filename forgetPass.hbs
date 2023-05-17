@@ -1,0 +1,32 @@
+
+<body>
+    {{>navbar}}
+    {{!-- Hello You have forgotten your password
+    <form action="/forgetPass" method="POST">
+    Email: <input type="email" name="email" id="">
+    <input type="submit" value="Send link"> --}}
+    </form>
+
+        <div class="container">
+        <div class="login-box">
+            <div class="sub-heading">
+                <h2>FORGET PASSWORD</h2>
+            </div>
+            <div class="login-form">
+                <form action="/forgetPass" method="POST">
+                    <div class="fr-mail fr-cnt">
+                        <p>Email</p>
+                        <input type="email" name="email">
+                    </div>
+                    <input type="submit" value="Send link">
+                    <div class="form-other-stuff">
+                        <a href="/register">Create an account?</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{>bottomBar}}
+</body>

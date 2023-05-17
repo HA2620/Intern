@@ -1,0 +1,42 @@
+<body>
+    {{>navbar}}
+    <div class="container">
+        <div class="prdct-details-cont">
+            <div class="prdct-big-img">
+                <img src="/Images/{{clickedProduct.name}}-jpg.jpg" alt="">
+            </div>
+            <div class="prdct-details">
+                <div class="product-title">
+                    <h2>{{clickedProduct.name}}</h2>
+                    <p>₹{{clickedProduct.price}}.00</p> <br>
+                    <p style="font-weight: 200;" class="prdct-detail-p">{{clickedProduct.description}}
+                        <br>
+                        <br>
+                        <br>
+                        <span class="little-bold">Origin :</span> {{clickedProduct.origin}} <br><br>
+
+                        <span class="little-bold">Fabric :</span> {{clickedProduct.fabric}}
+                        
+                        {{!-- <span class="little-bold">prod_id :</span> {{clickedProduct.prod_id}}
+                        <span class="little-bold">ID :</span> {{clickedProduct.id}} --}}
+                    </p>
+
+                    <div class="buy-btn">
+
+                        {{!-- <form action="/cart" method="POST">
+                            <div class="fr-mail fr-cnt">
+                                <input type="hidden" name="productId" value="{{clickedProduct.prod_id}}">
+                            </div>
+                            <input type="submit" value="ADD TO CART">
+                        </form> --}}
+
+                        <a href="/add/{{clickedProduct.prod_id}}">ADD TO CART</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{>bottomBar}}
+</body>

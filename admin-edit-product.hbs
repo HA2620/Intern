@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="login-box">
+            <div class="sub-heading">
+                <h2>Edit Product</h2>
+            </div>
+            <p></p>
+            <div class="login-form">
+                <form action="/admin/edit-product/{{product.prod_id}}" method="post">
+                    <div class="fr-cnt">
+                        <p for="productId">Product ID</p>
+                        <input type="number" id="productId" name="productId" required value="{{product.prod_id}}" readonly/>
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productName">Product Name</p>
+                        <input type="text" id="productName" name="productName" required value="{{product.name}}" />
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productDescription">Product Description</p>
+                        <input type="text" id="productDescription" name="productDescription" value="{{product.description}}" required>
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productPrice">Product Price</p>
+                        <input type="number" id="productPrice" name="productPrice" required value="{{product.price}}" />
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productFabric">Product Fabric</p>
+                        <input type="text" id="productFabric" name="productFabric" required value="{{product.fabric}}"/>
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productOrigin">Product Origin</p>
+                        <input type="text" id="productOrigin" name="productOrigin" required value="{{product.origin}}"/>
+                    </div>
+                    <div class="fr-cnt">
+                        <p for="productQty">Product Quantity</p>
+                        <input type="text" id="productQty" name="productQty" required value="{{product.qty}}" />
+                    </div>
+                    <div class="fr-cnt">
+                        <label value="{{product.category}}" for="catgory">Product Category - </label>
+                        <input type="radio" id="top" name="category" value="top"  value="{{product.category}}" />
+                        <label for="top">top</label>
+                        <input type="radio" id="bottom" name="category" value="bottom" value="{{product.category}}"/>
+                        <label for="bottom">bottom</label><br>
+                    </div>
+                    <div class="fr-cnt">
+                        <label for="product-image">Product Image:</label>
+                        <input type="file" id="product-image" name="product-image" accept="image/*" />
+                    </div>
+                    <div class="fr-cnt">
+                        <input type="submit" value="update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>
+
+{{!-- {{/each}} --}}

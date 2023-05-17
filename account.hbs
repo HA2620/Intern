@@ -1,0 +1,71 @@
+<body>
+    {{>navbar}}
+    <div class="container">
+        <div class="login-box">
+            <div class="sub-heading">
+                <h2>MY ACCOUNT</h2>
+            </div>
+        </div>
+        <div class="my-acc-cont">
+            <div class="big-box">
+                <div class="small-box">{{userDetails.firstName}}
+                    {{userDetails.lastName}}</div>
+                <div class="small-box">{{userDetails.email}}</div>
+                <div class="add-box">{{userDetails.address}}</div>
+            </div>
+            <div class="order-details-acc">
+                <p class="account-items">ORDERs HISTORY</p>
+                {{#if orderDetails}}
+
+                {{#each orderDetails}}
+                <div class="cart orderSection">
+                    <ul class="cartWrap">
+                        <p class="up order-id">#{{this.orderId}} | STATUS : {{this.orderStatus}}</p>
+
+                        {{#each this.shopItems}}
+
+                        <li class="Items odd">
+
+                            <div class="infoWrap">
+                                <div class="cartSection">
+                                    <img src="/Images/{{this.prodName}}-jpg.jpg" alt="{{this.prodName}}"
+                                        class="orderItemImg" />
+                                    <p class="prod-id">#QUE-00000-{{this.prodId}} | ORDER ON : {{../this.shopDate}}</p>
+                                    <h3 style="font-family: font-family: 'Montserrat', sans-serif;">
+                                        {{this.prodName}}</h3>
+
+                                    <p> <input type="text" class="qty" placeholder="1" value="{{this.prodQty}}"
+                                            readonly />
+                                         | STATUS : {{../this.orderStatus}}</p>
+
+
+                                </div>
+                                <div class="orderTotal cartSection">
+                                    <p>₹{{multiply this.prodPrice this.prodQty }}</p>
+
+                                </div>
+
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+
+                </div>
+                {{/each}}
+                {{else}}
+                <div>
+                    <p>You have not placed any order yet!</p>
+                </div>
+                {{/if}}
+
+
+
+            </div>
+            
+            <div class="btn"><a class="account-items" href="/logout">Logout</a></div>
+        </div>
+
+
+    </div>
+    {{>bottomBar}}
+</body>

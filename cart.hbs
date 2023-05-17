@@ -1,0 +1,84 @@
+<body>
+    {{>navbar}}
+
+    {{!-- Handlebars.registerHelper('loud', function (aString) {
+    return aString.toUpperCase()
+    }) --}}
+
+    <div class="policy-container">
+
+        <h4>SHOPPING CART</h4>
+    </div>
+    {{#if cartItems}}
+    <div class="cart">
+        <ul class="cartWrap">
+            {{#each cartItems}}
+            <li class="items odd">
+
+                <div class="infoWrap">
+                    <div class="cartSection">
+                        <img src="/Images/{{this.prodName}}-jpg.jpg" alt="{{this.prodName}}" class="itemImg" />
+                        <p class="itemNumber">#QUE-00000-{{this.prodId}}</p>
+                        <h3 style="font-family: font-family: 'Montserrat', sans-serif;">{{this.prodName}}</h3>
+
+                        <p> <input type="text" class="qty" placeholder="1" value="{{this.prodQty}}" readonly /> x
+                            ₹{{this.prodPrice}}</p>
+
+                        <p class="stockStatus">In Stock</p>
+                    </div>
+                    <div class="prodTotal cartSection">
+                        <p>₹{{multiply this.prodPrice this.prodQty }}</p>
+                    </div>
+                    <div class="cartSection removeWrap">
+                        <a href="/update/{{this.prodId}}/add" action="add" class="add">+</a>
+                        <a href="/update/{{this.prodId}}/sub" action="sub" class="sub">-</a>
+                        <a href="/update/{{this.prodId}}/clear" action="clear" class="remove">X</a>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+
+    </div>
+
+    {{!-- <div class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo"
+            placholder="Enter Code" />
+        <a href="#" class="btn"></a>
+    </div> --}}
+
+
+
+    <div class="subtotal cf">
+        <ul>
+            <li class="totalRow"><span class="label">Subtotal</span><span class="value">₹{{total.totalPrice}}.00</span>
+            </li>
+            <li class="totalRow"><span class="label">Discount</span><span class="value">-₹100.00</span>
+            </li>
+
+            <li class="totalRow"><span class="label">Shipping</span><span class="value">₹100.00</span></li>
+
+            <li class="totalRow"><span class="label">Tax</span><span class="value">₹{{ceil (minus total.includeTax
+                    total.totalPrice)}}.00</span></li>
+            <li class="totalRow final"><span class="label">Total</span><span class="value">₹{{ ceil total.includeTax}}.00</span></li>
+            {{!-- <li class="totalRow"><a href="#" class="btn continue">CHECKOUT</a></li> --}}
+            <li class="totalRow">
+                <form class="totalRow" action="/create-checkout-session" method="POST">
+                    <button class="btn" type="submit" id="checkout-button">CHECKOUT</button>
+                </form>
+            </li>
+
+
+        </ul>
+    </div>
+
+    {{else}}
+    <div class="no-cart-items">
+        <p>Your cart is empty <i class="fa-solid fa-cart-shopping"></i> </p>
+    </div>
+    {{/if}}
+
+
+    {{>bottomBar}}
+
+</body>
+

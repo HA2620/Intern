@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Encode+Sans+Semi+Expanded:wght@300&family=Encode+Sans:wght@100;200&family=Inter:wght@700&family=Montserrat:wght@400;500;600;700&family=Open+Sans&family=Raleway:wght@300;400;500&family=Roboto:wght@500&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e17fd0eebe.js" crossorigin="anonymous"></script>
+  {{!--
+  <link rel="stylesheet" href="/css/style.css"> --}}
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      position: relative;
+    }
+
+    .sidebar {
+      background-color: rgb(60, 75, 100);
+      color: #e7e9ec;
+      width: 250px;
+      height: 200vh;
+      z-index: 2;
+      position: fixed;
+    }
+
+    .sidebar h1 {
+      margin: 0;
+      padding: 10px;
+      background: rgb(48, 60, 84);
+      color: #e7e9ec;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      margin-left: 20px;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar i {
+      margin-right: 6px;
+    }
+
+    .sidebar ul li a:active,
+    .sidebar ul li a:visited {
+      background-color: rgb(70, 84, 108);
+    }
+
+    #overview {
+      margin: 15px 0;
+    }
+
+    #overview h2 {
+      font-size: 35px;
+      margin: 0;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      margin-left: 260px;
+      color: rgb(83, 98, 135);
+    }
+
+    .content p {
+      font-size: 14px;
+    }
+
+    .content h1 {
+      display: inline-block;
+    }
+
+    .content input.add-btn {
+      height: 40px;
+
+
+    }
+
+
+
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 10px;
+      padding-top: 20px;
+      flex-basis: calc(50% - 10px);
+      box-sizing: border-box;
+      vertical-align: center;
+      margin-right: 10px;
+      border-right: 4px solid gray;
+      border-bottom: 4px solid gray;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .product-table th,
+    .product-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .product-table th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .product-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .product-table a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .product-table a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+
+    /*{{!-- Overlay --}}*/
+    #overlay-product-add-page,
+    #overlay-product-edit-page {
+      position: fixed;
+      display: none;
+      width: 60%;
+      height: 80%;
+      top: 50px;
+      left: 270px;
+      background-color: rgb(255, 255, 255);
+      color: #333;
+      z-index: 2;
+      cursor: pointer;
+      /*border: .5px solid gray;*/
+      box-shadow: 5px 5px 10px grey;
+      ;
+      padding: 20px;
+    }
+
+
+    #overlay-product-add-page input,
+    #overlay-product-edit-page input {
+      width: 200px;
+      height: 35px;
+
+    }
+
+    #overlay-product-add-page input[type='radio'],
+    #overlay-product-edit-page input[type='radio'] {
+      width: 15px;
+      height: 15px;
+    }
+
+    #overlay-product-add-page input[type='file'],
+    #overlay-product-edit-page input[type='file'] {
+      width: 100px;
+      height: 20px;
+      font-size: 16px;
+
+    }
+
+    #overlay-product-add-page input.right-up,
+    #overlay-product-edit-page input.right-up {
+      float: right;
+      width: 30px;
+      height: 30px;
+      font-size: 16;
+    }
+
+    div.fr-cnt {
+
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>Admin T.U.C</h1>
+      <ul>
+        <li><a href="#overview" class="active"><i class="fa-sharp fa-solid fa-chart-simple"></i>Dashboard</a></li>
+        <li><a href="#products"><i class="fa-sharp fa-solid fa-bag-shopping"></i>Products</a></li>
+        <li><a href="#orders"><i class="fa-solid fa-book"></i>Orders</a></li>
+        <li><a href="#customers"><i class="fa-regular fa-user"></i>Customers</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="overview">
+      <div class="content">
+        <div class="card-container">
+          <div class="card">
+            <i class="fa-solid fa-sack-dollar fa-2xl"></i>
+            <p>Total Sales</p>
+            <h2>₹{{overview.sales}}</h2>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-users fa-2xl"></i>
+            <p>Total Users</p>
+            <h2>{{users.length}}</h2>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-book fa-2xl"></i>
+            <p>Total Orders</p>
+            <h2>{{overview.productSold}}</h2>
+          </div>
+          <div class="card">
+            <i class="fa-sharp fa-solid fa-bag-shopping fa-2xl"></i>
+            <p>Total Products</p>
+            <h2>{{products.length}}</h2>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-chart-line fa-2xl"></i>
+            <p>Total Views</p>
+            <h2>{{overview.webViews}}</h2>
+          </div>
+        </div>
+        {{!--
+      </div> --}}
+      <div id="products">
+        <h1>Products</h1>
+        <input class="add-btn" type="button" value="+ add product" onclick="on()" />
+        <div id="overlay-product-add-page">
+          <input type="button" value="X" class="right-up" onclick="off()">
+          <h1>Add Product</h1>
+          <div class="login-form">
+            <form action="/admin/add-product" method="post"  enctype="multipart/form-data">
+              <div class="fr-cnt">
+                <label for="productId">Product ID - </label>
+                <input type="number" id="productId" name="productId" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="productName">Product Name - </label>
+                <input type="text" id="productName" name="productName" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="productDescription">Product Description - </label>
+                <input type="text" id="productDescription" name="productDescription" required>
+              </div>
+              <div class="fr-cnt">
+                <label for="productPrice">Product Price - </label>
+                <input type="number" id="productPrice" name="productPrice" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="productFabric">Product Fabric - </label>
+                <input type="text" id="productFabric" name="productFabric" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="productOrigin">Product Origin - </label>
+                <input type="text" id="productOrigin" name="productOrigin" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="productQty">Product Quantity - </label>
+                <input type="text" id="productQty" name="productQty" required />
+              </div>
+              <div class="fr-cnt">
+                <label for="catgory">Product Category - </label>
+                <input type="radio" id="top" name="category" value="top" />
+                <label for="top">top</label>
+                <input type="radio" id="bottom" name="category" value="bottom" />
+                <label for="bottom">bottom</label><br>
+              </div>
+              <div class="fr-cnt">
+                <label for="product-image">Product Image - (Only jpg allowed)</label>
+                <input type="file" id="product-image" name="product-image" accept=".jpg" />
+              </div>
+              <br>
+              <div class="fr-cnt">
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <table class="product-table">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            {{#each products}}
+            <td>{{this.prod_id}}</td>
+            <td>{{this.name}}</td>
+            <td>₹{{this.price}}</td>
+            <td>{{this.qty}}</td>
+            <td>{{this.category}}</td>
+            <td><a href="/admin/dashboard/product/edit?id={{this.prod_id}}">Edit</a> | <a
+                href="/admin/dashboard/product/delete?id={{this.prod_id}}">Delete</a></td>
+          </tr>
+          {{/each}}
+
+
+
+        </table>
+      </div>
+      <div id="orders">
+        <h1>Orders</h1>
+        <table class="product-table">
+          <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Price</th>
+
+          </tr>
+          <tr>
+            {{#each orders}}
+            {{#each this.shopItems}}
+            <td>{{../this.orderId}}</td>
+            <td>{{this.prodName}}</td>
+            <td>{{../this.orderStatus}}</td>
+            <td>{{../this.shopDate}}</td>
+
+            <td>₹{{this.prodPrice}}</td>
+
+          </tr>
+
+          {{/each}}
+          {{/each}}
+        </table>
+      </div>
+      <div id="customers">
+        <h1>Customers</h1>
+        <table class="product-table">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>verified?</th>
+            <th>Address</th>
+
+          </tr>
+          <tr>
+            {{#each users}}
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.verified}}</td>
+            <td>{{this.address}}</td>
+          </tr>
+          {{/each}}
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function on() {
+      document.getElementById("overlay-product-add-page").style.display = "block";
+    }
+
+    function off() {
+      document.getElementById("overlay-product-add-page").style.display = "none";
+    }
+
+  </script>
+
+</body>
+
+</html>
